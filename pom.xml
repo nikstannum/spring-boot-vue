@@ -92,8 +92,8 @@
                 </executions>
                 <configuration>
                     <workingDirectory>src/main/frontend/vue</workingDirectory>
-                    <nodeVersion>v17.9.1</nodeVersion>
-                    <npmVersion>8.11.0</npmVersion>
+                    <nodeVersion>v18.13.0</nodeVersion>
+                    <npmVersion>9.2.0</npmVersion>
                 </configuration>
             </plugin>
 
