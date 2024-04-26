@@ -1,7 +1,4 @@
-<script>
-export default {
-  name: 'TheWelcomeView'
-}
+<script setup>
 </script>
 
 <template>

@@ -1,39 +1,43 @@
-<script xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<script>
+import { onMounted, ref } from 'vue'
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
 import axios from 'axios'
-import ColumnGroup from 'primevue/columngroup'
-import Row from 'primevue/row'
+import router from '@/router/index.js'
 
 export default {
-  name: 'MessagesView',
   components: {
     DataTable,
     Column
   },
-  data() {
-    return {
-      messages: []
-    }
-  },
-  methods: {
-    fetchData() {
+  setup() {
+    const messages = ref([])
+
+    const fetchData = () => {
       axios.get('/api/messages')
         .then(response => {
-          this.messages = response.data
+          messages.value = response.data
         })
-    },
-    handleDoubleClick(id) {
-      this.$router.push({ path: `/findById/${id}` })
     }
-  },
-  mounted() {
-    this.fetchData()
+
+    const handleDoubleClick = (id) => {
+      router.push({ path: `/findById/${id}` })
+      // useRouter().push({ path: `/findById/${id}` })
+    }
+
+    onMounted(() => {
+      fetchData()
+    })
+
+    return {
+      messages,
+      handleDoubleClick
+    }
   }
 }
+
 </script>
 
-Copy
 <template>
   <div class="card">
     <DataTable :value="messages" showGridlines>
