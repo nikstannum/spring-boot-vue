@@ -2,11 +2,22 @@
 import PopUpDialog from './components/PopUpDialog.vue'
 import { ref } from 'vue'
 
-const dialog = ref(false)
 
-function openDialog() {
-  dialog.value = !dialog.value
+const dialog = ref(false)
+const config = ref(null)
+
+
+function openDialog(type, message, handleYes, handleNo, handleCancel) {
+  config.value = {
+    type: type,
+    message: message,
+    handleYes: handleYes,
+    handleNo: handleNo,
+    handleCancel: handleCancel
+  }
+  dialog.value = true
 }
+
 </script>
 
 <template>
@@ -18,10 +29,13 @@ function openDialog() {
       </nav>
     </div>
   </header>
-<!--  <button @click="openDialog">Открыть диалог</button>-->
-  <PopUpDialog :show="dialog"></PopUpDialog>
+  <button
+  @click="openDialog('Confirmation', 'Are you sure?',
+  () => console.log('pressed YES'),
+  () => console.log('pressed NO'),
+  () => console.log('pressed CANCEL'))">Открыть диалог</button>
+  <PopUpDialog :show="dialog" :config="config"></PopUpDialog>
   <RouterView />
-  <!--  <button id="app__button__dialog" @click="router.push('/dialog')">Dialog</button>-->
 </template>
 
 <style scoped>
