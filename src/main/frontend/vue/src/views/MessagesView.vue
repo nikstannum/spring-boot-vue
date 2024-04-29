@@ -14,10 +14,10 @@ export default {
     const messages = ref([])
 
     const fetchData = () => {
-      axios.get('/api/messages')
-        .then(response => {
-          messages.value = response.data
-        })
+      // axios.get('/api/messages')
+      //   .then(response => {
+      //     messages.value = response.data
+      //   })
     }
 
     const handleDoubleClick = (id) => {

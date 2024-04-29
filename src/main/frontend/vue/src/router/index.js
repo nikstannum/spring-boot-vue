@@ -25,7 +25,9 @@ const router = createRouter({
       path: '/findById/:id',
       name: 'findById',
       component: () => import('../views/MessageById.vue')
-    }
+    },
   ]
 })
-export default router
+export default
+  router
+

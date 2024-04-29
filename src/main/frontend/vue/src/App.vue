@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import PopUpDialog from './components/PopUpDialog.vue'
+import { ref } from 'vue'
+
+const dialog = ref(false)
+
+function openDialog() {
+  dialog.value = !dialog.value
+}
+</script>
 
 <template>
   <header>
@@ -9,8 +18,10 @@
       </nav>
     </div>
   </header>
-
+<!--  <button @click="openDialog">Открыть диалог</button>-->
+  <PopUpDialog :show="dialog"></PopUpDialog>
   <RouterView />
+  <!--  <button id="app__button__dialog" @click="router.push('/dialog')">Dialog</button>-->
 </template>
 
 <style scoped>
