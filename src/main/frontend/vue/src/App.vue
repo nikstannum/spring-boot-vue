@@ -30,7 +30,7 @@ function openDialog(type, message, handleYes, handleNo, handleCancel) {
     </div>
   </header>
   <button
-  @click="openDialog('Confirmation', 'Are you sure?',
+  @click="openDialog('Some header', 'Are you sure?',
   () => console.log('pressed YES'),
   () => console.log('pressed NO'),
   () => console.log('pressed CANCEL'))">Открыть диалог</button>

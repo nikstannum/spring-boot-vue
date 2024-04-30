@@ -13,12 +13,11 @@ const props = defineProps({
       default: null
     },
 })
-const visible = ref(false)
+const visible = ref(true)
 </script>
 
 <template>
   <div v-if="props.show" class="card flex justify-content-center">
-    <Button label="Show" @click="visible = true" />
     <Dialog v-model:visible="visible" modal :header="config.type" :style="{
       width: '25rem'
     }">
